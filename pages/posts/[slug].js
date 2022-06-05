@@ -1,6 +1,6 @@
-import styles from "../../styles/Slug.module.css";
 import { GraphQLClient, gql } from "graphql-request";
-import moment from "moment";
+
+import BlogPost from "../../components/BlogPost";
 
 const graphcms = new GraphQLClient(
   "https://api-ca-central-1.graphcms.com/v2/cl41sm5oq3h4501xsegxr7l5l/master"
@@ -59,28 +59,6 @@ export async function getStaticProps({ params }) {
   };
 }
 
-export default function BlogPost({ post }) {
-  return (
-    <main className={styles.blog}>
-      {post.coverPhoto && (
-        <img src={post.coverPhoto.url} className={styles.cover} />
-      )}
-      <div className={styles.title}>
-        <h1>{post.title}</h1>
-      </div>
-      <div
-        className={styles.content}
-        dangerouslySetInnerHTML={{ __html: post.content.html }}
-      ></div>
-      <div className={styles.authdetails}>
-        <img src={post.author.avatar.url} />
-        <div className={styles.authtext}>
-          <h6>By {post.author.name}</h6>
-          <h6 className={styles.date}>
-            {moment(post.datePublished).format("MMMM DD, YYYY")}
-          </h6>
-        </div>
-      </div>
-    </main>
-  );
-}
+export default ({ post }) => {
+  return <BlogPost {...post} />;
+};
