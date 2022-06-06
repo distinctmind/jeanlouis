@@ -5,7 +5,7 @@ import styles from "../styles/BlogCard.module.css";
 export default function BlogCard({
   title,
   author,
-  coverPhoto,
+  featuredImage,
   datePublished,
   slug,
 }) {
@@ -13,7 +13,7 @@ export default function BlogCard({
     <Link href={"/posts/" + slug}>
       <div className={styles.card}>
         <div className={styles.imgContainer}>
-          {coverPhoto && <img src={coverPhoto.url} />}
+          {featuredImage && <img src={featuredImage.url} />}
         </div>
         <div className={styles.text}>
           <h2>{title}</h2>

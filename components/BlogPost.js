@@ -4,13 +4,15 @@ import moment from "moment";
 export default function BlogPost({
   title,
   author,
-  coverPhoto,
+  featuredImage,
   datePublished,
   content,
 }) {
   return (
     <main className={styles.blog}>
-      {coverPhoto && <img src={coverPhoto.url} className={styles.cover} />}
+      {featuredImage && (
+        <img src={featuredImage.url} className={styles.cover} />
+      )}
       <div className={styles.title}>
         <h1>{title}</h1>
       </div>
